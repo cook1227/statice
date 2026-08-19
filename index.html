@@ -14,7 +14,7 @@
       --ink: #33242d;
       --muted: #8b7882;
       --line: #f1d8e5;
-      --paper: rgba(255, 255, 255, 0.94);
+      --paper: rgba(255, 240, 247, 0.94);
       --shadow: 0 14px 40px rgba(142, 36, 91, 0.10);
       --radius: 20px;
     }
@@ -31,8 +31,8 @@
       margin: 0;
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(239, 22, 143, 0.08), transparent 34rem),
-        linear-gradient(180deg, #fffafd 0%, #fff7fb 55%, #fff 100%);
+        radial-gradient(circle at top left, rgba(239, 22, 143, 0.05), transparent 34rem),
+        #fff;
       font-family:
         -apple-system, BlinkMacSystemFont, "Helvetica Neue",
         "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
@@ -74,7 +74,7 @@
       z-index: 50;
       margin: 0 -16px 22px;
       padding: 10px 16px;
-      background: rgba(255, 255, 255, 0.90);
+      background: rgba(255, 240, 247, 0.92);
       border-bottom: 1px solid rgba(239, 22, 143, 0.14);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -131,7 +131,7 @@
       border: 0;
       border-radius: 999px;
       padding: 10px 14px;
-      background: #fff;
+      background: var(--pink-soft);
       color: var(--muted);
       box-shadow: 0 4px 18px rgba(75, 36, 55, 0.08);
       cursor: pointer;
@@ -196,7 +196,7 @@
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: #fff;
+      background: var(--pink-soft);
     }
 
     .qty-button {
@@ -234,7 +234,7 @@
 
     .receipt {
       overflow: hidden;
-      background: #fff;
+      background: var(--pink-soft);
       border: 1px solid rgba(239, 22, 143, 0.13);
       border-radius: 24px;
       box-shadow: var(--shadow);
@@ -342,7 +342,7 @@
     }
 
     .action-secondary {
-      background: #fff;
+      background: var(--pink-soft);
       color: var(--pink-dark);
       border: 1px solid rgba(239, 22, 143, 0.18);
     }
@@ -726,7 +726,7 @@
       var ctx = canvas.getContext("2d");
 
       // background
-      ctx.fillStyle = "#fff7fb";
+      ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, W, H);
 
       // header image
@@ -749,7 +749,7 @@
       ctx.shadowBlur = 32;
       ctx.shadowOffsetY = 10;
       roundedRect(ctx, cardX, cardY, cardW, cardH, 34);
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = "#fff0f7";
       ctx.fill();
       ctx.restore();
 
