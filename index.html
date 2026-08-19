@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ef168f">
-  <title>Statice Goods Register</title>
+  <title>Statice Goods</title>
 
   <style>
     :root {
@@ -74,11 +74,9 @@
       z-index: 50;
       margin: 0 -16px 22px;
       padding: 10px 16px;
-      background: rgba(255, 240, 247, 0.92);
-      border-bottom: 1px solid rgba(239, 22, 143, 0.14);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 8px 24px rgba(111, 35, 73, 0.06);
     }
 
     .sticky-inner {
@@ -108,23 +106,9 @@
 
     .intro {
       display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-      margin: 28px 0 18px;
-    }
-
-    .intro h1 {
-      margin: 0;
-      font-size: clamp(22px, 4.5vw, 34px);
-      letter-spacing: 0.02em;
-    }
-
-    .intro p {
-      margin: 7px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 20px 0 18px;
     }
 
     .reset-top {
@@ -397,11 +381,7 @@
       }
 
       .intro {
-        display: block;
-      }
-
-      .reset-top {
-        margin-top: 12px;
+        justify-content: flex-end;
       }
 
       .product {
@@ -449,17 +429,13 @@
 
     <div class="sticky-total" aria-live="polite">
       <div class="sticky-inner">
-        <div class="sticky-label">CURRENT TOTAL</div>
+        <div class="sticky-label">TOTAL</div>
         <div class="sticky-price" id="stickyTotal">￥0</div>
       </div>
     </div>
 
     <main>
       <section class="intro">
-        <div>
-          <h1>Goods Register</h1>
-          <p>買うグッズの数量を入れるだけ。小計と合計を自動計算します。</p>
-        </div>
         <button class="reset-top" id="resetButton" type="button">数量をすべて0に戻す</button>
       </section>
 
@@ -498,7 +474,7 @@
       </section>
     </main>
 
-    <div class="footer">Statice Goods Register</div>
+    <div class="footer">Statice</div>
   </div>
 
 <script>
