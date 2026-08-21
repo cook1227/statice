@@ -478,22 +478,24 @@
   "use strict";
 
   var products = [
-    { id: "pamphlet",   name: "パンフレット",             price: 4000 },
-    { id: "tshirt",     name: "ドライTシャツ",             price: 3500 },
-    { id: "uniform",    name: "ユニフォーム",              price: 7800 },
-    { id: "shorts",     name: "ナイロンショートパンツ",      price: 5500 },
-    { id: "hat",        name: "バケットハット",             price: 4000 },
-    { id: "towel",      name: "バスタオル",                price: 4000 },
-    { id: "sandals",    name: "シャワーサンダル",           price: 3500 },
-    { id: "penlight",   name: "ペンライト",                price: 3500 },
-    { id: "plush",      name: "ぬいぐるみポーチ",           price: 3000 },
-    { id: "shopper",    name: "ショッパー",                 price: 900 },
-    { id: "sticker",    name: "ステッカー",                 price: 600 },
-    { id: "acrylic",    name: "アクリルスタンド",           price: 1500 }
+    { id: "pamphlet",       name: "パンフレット",                         price: 4000, maxQty: 3 },
+    { id: "tshirt",         name: "Tシャツ（サイズ：M / L / XL）",          price: 3800, maxQty: 3 },
+    { id: "hoodie",         name: "ジップパーカー（サイズ：L / XL）",       price: 8500, maxQty: 3 },
+    { id: "sports-towel",   name: "スポーツタオル",                       price: 2800, maxQty: 3 },
+    { id: "bangle-light",   name: "バングルライト",                       price: 3000, maxQty: 3 },
+    { id: "body-bag",       name: "ボディバッグ",                         price: 4500, maxQty: 3 },
+    { id: "umbrella",       name: "折りたたみ傘",                         price: 3800, maxQty: 3 },
+    { id: "bottle-holder",  name: "ペットボトルホルダー",                  price: 1600, maxQty: 3 },
+    { id: "bromide-holder", name: "ブロマイドホルダー",                    price: 2200, maxQty: 3 },
+    { id: "tour-sticker",   name: "ツアーステッカー",                      price: 600, maxQty: 3 },
+    { id: "acrylic",        name: "アクリルスタンド",                     price: 1500, maxQty: 3 },
+    { id: "bromide",        name: "ランダムブロマイド（全6種）",            price: 300, maxQty: 20 },
+    { id: "venue-keyholder",name: "会場別ぷっくりアクリルキーホルダー",        price: 1200, maxQty: 2 },
+    { id: "venue-card",     name: "会場別フレームシアーカード",              price: 900, maxQty: 2 },
+    { id: "gacha",          name: "まあやがちゃ ～statice ver.～",          price: 600, maxQty: 20 }
   ];
 
-  var MAX_QTY = 20;
-  var STORAGE_KEY = "statice_goods_register_v1";
+  var STORAGE_KEY = "statice_goods_register_v2";
   var quantities = {};
 
   function yen(value) {
@@ -510,7 +512,7 @@
       products.forEach(function (p) {
         var n = parseInt(saved[p.id], 10);
         if (!isNaN(n)) {
-          quantities[p.id] = Math.max(0, Math.min(MAX_QTY, n));
+          quantities[p.id] = Math.max(0, Math.min(p.maxQty, n));
         }
       });
     } catch (e) {
@@ -598,8 +600,11 @@
   }
 
   function changeQuantity(id, delta) {
+    var product = products.find(function (p) { return p.id === id; });
+    if (!product) return;
+
     var next = (quantities[id] || 0) + delta;
-    quantities[id] = Math.max(0, Math.min(MAX_QTY, next));
+    quantities[id] = Math.max(0, Math.min(product.maxQty, next));
     updateAll();
   }
 
